@@ -24,7 +24,7 @@ export const TodoFooter: FC<Props> = ({
 
       <TodoFilter
         statusFilter={statusFilter}
-        setStatusFilter={setStatusFilter}
+        onChangeStatusFilter={setStatusFilter}
       />
 
       <button

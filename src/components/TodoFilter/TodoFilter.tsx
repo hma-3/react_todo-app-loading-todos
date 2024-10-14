@@ -5,10 +5,13 @@ import { StatusFilter } from '../../types';
 
 interface Props {
   statusFilter: StatusFilter;
-  setStatusFilter: (status: StatusFilter) => void;
+  onChangeStatusFilter: (status: StatusFilter) => void;
 }
 
-export const TodoFilter: FC<Props> = ({ statusFilter, setStatusFilter }) => {
+export const TodoFilter: FC<Props> = ({
+  statusFilter,
+  onChangeStatusFilter,
+}) => {
   return (
     <nav className="filter" data-cy="Filter">
       {Object.values(StatusFilter).map(status => {
@@ -23,7 +26,7 @@ export const TodoFilter: FC<Props> = ({ statusFilter, setStatusFilter }) => {
             className={cn('filter__link', {
               selected: isSelectedCurrentStatus,
             })}
-            onClick={() => setStatusFilter(status)}
+            onClick={() => onChangeStatusFilter(status)}
           >
             {status}
           </a>

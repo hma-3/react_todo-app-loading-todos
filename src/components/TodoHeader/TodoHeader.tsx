@@ -4,18 +4,21 @@ import './TodoHeader.scss';
 
 interface Props {
   leftTodos: number;
+  todosAmount: number;
 }
 
-export const TodoHeader: FC<Props> = ({ leftTodos }) => {
+export const TodoHeader: FC<Props> = ({ leftTodos, todosAmount }) => {
   return (
     <header className="todoapp__header">
-      <button
-        type="button"
-        className={cn('todoapp__toggle-all', {
-          active: leftTodos === 0,
-        })}
-        data-cy="ToggleAllButton"
-      />
+      {!!todosAmount && (
+        <button
+          type="button"
+          className={cn('todoapp__toggle-all', {
+            active: leftTodos === 0,
+          })}
+          data-cy="ToggleAllButton"
+        />
+      )}
 
       <form>
         <input

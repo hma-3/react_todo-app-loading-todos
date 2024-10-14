@@ -1,15 +1,16 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import './TodoErrorNotification.scss';
+import { ErrorMessages } from '../../types';
 
 interface Props {
-  errorMessage: string;
-  setErrorMessage: (message: string) => void;
+  errorMessage: ErrorMessages;
+  onResetErrorMessage: () => void;
 }
 
 export const TodoErrorNotification: FC<Props> = ({
   errorMessage,
-  setErrorMessage,
+  onResetErrorMessage,
 }) => {
   return (
     <div
@@ -22,7 +23,7 @@ export const TodoErrorNotification: FC<Props> = ({
         data-cy="HideErrorButton"
         type="button"
         className="delete"
-        onClick={() => setErrorMessage('')}
+        onClick={onResetErrorMessage}
       />
       {errorMessage}
     </div>

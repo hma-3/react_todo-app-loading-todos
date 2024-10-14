@@ -34,10 +34,6 @@ export const TodoItem: FC<Props> = ({
         />
       </label>
 
-      <span data-cy="TodoTitle" className="todo__title">
-        {title}
-      </span>
-
       {isCurrentTodoBeingEditing ? (
         <form>
           <input
@@ -49,9 +45,15 @@ export const TodoItem: FC<Props> = ({
           />
         </form>
       ) : (
-        <button type="button" className="todo__remove" data-cy="TodoDelete">
-          ×
-        </button>
+        <>
+          <span data-cy="TodoTitle" className="todo__title">
+            {title}
+          </span>
+
+          <button type="button" className="todo__remove" data-cy="TodoDelete">
+            ×
+          </button>
+        </>
       )}
 
       <div
