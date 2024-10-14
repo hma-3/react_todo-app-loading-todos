@@ -21,15 +21,15 @@ export const TodoList: FC<Props> = ({ todos, statusFilter }) => {
   return (
     <section className="todoapp__main" data-cy="TodoList">
       {visibleTodos.map(todo => {
-        const isCurrentTotoBeingEditing = editingTodo?.id === todo.id;
-        const isCurrentTotoLoading = loadingTodo?.id === todo.id;
+        const isCurrentTodoBeingEditing = editingTodo?.id === todo.id;
+        const isCurrentTodoLoading = loadingTodo?.id === todo.id;
 
         return (
           <TodoItem
             key={todo.id}
             todo={todo}
-            isCurrentTotoBeingEditing={isCurrentTotoBeingEditing}
-            isCurrentTotoLoading={isCurrentTotoLoading}
+            isCurrentTodoBeingEditing={isCurrentTodoBeingEditing}
+            isCurrentTodoLoading={isCurrentTodoLoading}
           />
         );
       })}

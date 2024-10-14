@@ -13,12 +13,13 @@ export const TodoFilter: FC<Props> = ({ statusFilter, setStatusFilter }) => {
     <nav className="filter" data-cy="Filter">
       {Object.values(StatusFilter).map(status => {
         const isSelectedCurrentStatus = statusFilter === status;
+        const link = `#/${status === StatusFilter.All ? '' : status.toLocaleLowerCase()}`;
 
         return (
           <a
             key={status}
             data-cy={`FilterLink${status}`}
-            href={`#/${status === StatusFilter.All ? '' : status.toLocaleLowerCase()}`}
+            href={link}
             className={cn('filter__link', {
               selected: isSelectedCurrentStatus,
             })}

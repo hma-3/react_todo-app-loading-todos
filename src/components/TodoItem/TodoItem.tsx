@@ -6,14 +6,14 @@ import { Todo } from '../../types';
 
 interface Props {
   todo: Todo;
-  isCurrentTotoBeingEditing: boolean;
-  isCurrentTotoLoading: boolean;
+  isCurrentTodoBeingEditing: boolean;
+  isCurrentTodoLoading: boolean;
 }
 
 export const TodoItem: FC<Props> = ({
   todo,
-  isCurrentTotoBeingEditing,
-  isCurrentTotoLoading,
+  isCurrentTodoBeingEditing,
+  isCurrentTodoLoading,
 }) => {
   const { id, completed, title } = todo;
 
@@ -38,7 +38,7 @@ export const TodoItem: FC<Props> = ({
         {title}
       </span>
 
-      {isCurrentTotoBeingEditing ? (
+      {isCurrentTodoBeingEditing ? (
         <form>
           <input
             data-cy="TodoTitleField"
@@ -57,7 +57,7 @@ export const TodoItem: FC<Props> = ({
       <div
         data-cy="TodoLoader"
         className={cn('modal overlay', {
-          'is-active': isCurrentTotoLoading,
+          'is-active': isCurrentTodoLoading,
         })}
       >
         <div className="modal-background has-background-white-ter" />
