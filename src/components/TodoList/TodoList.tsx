@@ -11,7 +11,7 @@ interface Props {
 
 export const TodoList: FC<Props> = ({ todos, statusFilter }) => {
   const [editingTodo] = useState<Todo | null>(null);
-  const [loadingTodo] = useState<Todo | null>(null);
+  const [loadingTodoIds] = useState<number[]>([]);
 
   const visibleTodos = useMemo(
     () => filterTodos(todos, statusFilter),
@@ -22,7 +22,7 @@ export const TodoList: FC<Props> = ({ todos, statusFilter }) => {
     <section className="todoapp__main" data-cy="TodoList">
       {visibleTodos.map(todo => {
         const isCurrentTodoBeingEditing = editingTodo?.id === todo.id;
-        const isCurrentTodoLoading = loadingTodo?.id === todo.id;
+        const isCurrentTodoLoading = loadingTodoIds.includes(todo.id);
 
         return (
           <TodoItem

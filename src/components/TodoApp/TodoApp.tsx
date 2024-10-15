@@ -27,6 +27,11 @@ export const TodoApp = () => {
     [],
   );
 
+  const handleError = (message: ErrorMessages) => {
+    setErrorMessage(message);
+    setTimeout(handleResetErrorMessage, 3000);
+  };
+
   useEffect(() => {
     handleResetErrorMessage();
 
@@ -35,12 +40,7 @@ export const TodoApp = () => {
         setTodos(currentTodos);
         setLeftTodos(countLeftTodos(currentTodos));
       })
-      .catch(error => {
-        setErrorMessage(ErrorMessages.LOADING_TODOS);
-        setTimeout(handleResetErrorMessage, 3000);
-
-        throw error;
-      });
+      .catch(() => handleError(ErrorMessages.LOADING_TODOS));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
